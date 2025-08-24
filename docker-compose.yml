@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  user-service:
+    build: ./services/user-service
+    image: ${DOCKERHUB_USERNAME:-jim0701}/user-service:latest
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5001:80"
+
+  product-service:
+    build: ./services/product-service
+    image: ${DOCKERHUB_USERNAME:-jim0701}/product-service:latest
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5002:80"
+
+  gateway:
+    build: ./gateway
+    image: ${DOCKERHUB_USERNAME:-jim0701}/gateway:latest
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5000:80"
+    depends_on:
+      - user-service
+      - product-service
