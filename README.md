@@ -14,7 +14,7 @@
 3. 測試
    - Gateway: http://localhost:5000/user/1
    - Gateway: http://localhost:5000/product/1
- 
+  
 ## GitHub Actions（CI/CD）
 - 建立 GitHub Repo，推上此專案
 - 在 **Settings → Secrets and variables → Actions** 建立：
