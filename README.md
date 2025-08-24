@@ -33,9 +33,6 @@
     - `docker push your-dockerhub-user/gateway:latest`
 
 > **記得**：把 `docker-compose.yml` 中的 `your-dockerhub-user` 換成你的 Docker Hub 帳號。
-**記得**：把 `ci-cd.yml` 中的 `DOCKERHUB_USERNAME` 換成你的 Docker Hub 帳號。
-**記得**：把 `ci-cd.yml` 中的 `DOCKERHUB_PASSWORD` 換成你的 Docker Hub 密碼。
-**記得**：把 `ci-cd.yml` 中的 `your-dockerhub-user` 換成你的 Docker Hub 帳號。
 
 
 注意事項
