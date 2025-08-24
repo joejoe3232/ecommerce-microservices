@@ -5,15 +5,35 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [ { "Host": "user-service", "Port": 80 } ],
       "UpstreamPathTemplate": "/user/{id}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1
+    },
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [ { "Host": "user-service", "Port": 80 } ],
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Priority": 2
     },
     {
       "DownstreamPathTemplate": "/api/product/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [ { "Host": "product-service", "Port": 80 } ],
       "UpstreamPathTemplate": "/product/{id}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1
+    },
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [ { "Host": "product-service", "Port": 80 } ],
+      "UpstreamPathTemplate": "/product",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Priority": 2
     }
   ],
-  "GlobalConfiguration": { }
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  }
 }

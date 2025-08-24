@@ -20,6 +20,20 @@
 - 在 **Settings → Secrets and variables → Actions** 建立：
   - `DOCKERHUB_USERNAME`
   - `DOCKERHUB_PASSWORD`
+
+您需要在 GitHub 倉庫中設置正確的 secrets：
+進入您的 GitHub 倉庫
+點擊 Settings 標籤
+在左側選單中點擊 Secrets and variables → Actions
+點擊 New repository secret 按鈕
+添加以下兩個 secrets：
+
+Name: DOCKERHUB_USERNAME
+Value: username
+
+Name: DOCKERHUB_PASSWORD  
+Value: 您的Docker Hub個人訪問令牌
+
 - 推送到 `main` 分支後會：
   - build .NET 專案
   - 以 docker compose 建立三個映像

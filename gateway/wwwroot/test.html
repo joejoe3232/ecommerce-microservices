@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gateway 測試頁面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .status {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .api-test {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .response {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Gateway 靜態文件測試</h1>
+        
+        <div class="status">
+            ✅ 如果您看到這個頁面，說明靜態文件已經正常工作！
+        </div>
+
+        <div class="api-test">
+            <h3>🧪 API 測試</h3>
+            <p>測試 Gateway 的 API 路由功能：</p>
+            
+            <button onclick="testUserAPI()">測試用戶 API</button>
+            <button onclick="testProductAPI()">測試商品 API</button>
+            
+            <div id="apiResponse" class="response" style="display: none;"></div>
+        </div>
+
+        <div class="api-test">
+            <h3>🔗 快速連結</h3>
+            <p><a href="/">主頁</a> | <a href="/test.html">測試頁面</a></p>
+            <p><a href="http://localhost:5001/swagger" target="_blank">User Service Swagger</a></p>
+            <p><a href="http://localhost:5002/swagger" target="_blank">Product Service Swagger</a></p>
+        </div>
+    </div>
+
+    <script>
+        async function testUserAPI() {
+            try {
+                const response = await fetch('/user/1');
+                const data = await response.json();
+                document.getElementById('apiResponse').innerHTML = `✅ 用戶 API 測試成功:\n${JSON.stringify(data, null, 2)}`;
+                document.getElementById('apiResponse').style.display = 'block';
+            } catch (error) {
+                document.getElementById('apiResponse').innerHTML = `❌ 用戶 API 測試失敗:\n${error.message}`;
+                document.getElementById('apiResponse').style.display = 'block';
+            }
+        }
+
+        async function testProductAPI() {
+            try {
+                const response = await fetch('/product/1');
+                const data = await response.json();
+                document.getElementById('apiResponse').innerHTML = `✅ 商品 API 測試成功:\n${JSON.stringify(data, null, 2)}`;
+                document.getElementById('apiResponse').style.display = 'block';
+            } catch (error) {
+                document.getElementById('apiResponse').innerHTML = `❌ 商品 API 測試失敗:\n${error.message}`;
+                document.getElementById('apiResponse').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
